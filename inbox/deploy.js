@@ -2,9 +2,11 @@ const HdWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const { interface, bytecode } = require('./compile');
 
+const mnemonic = "";
+
 // use test wallet
 const provider = new HdWalletProvider(
-  'liar forest slender marriage clown middle actress sense birth catalog uncle rival',
+  mnemonic,
   'https://kovan.infura.io/v3/af38ea05790c4aa49921ecf37bd84b34'
 );
 const web3 = new Web3(provider);
