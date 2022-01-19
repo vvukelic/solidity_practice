@@ -1,10 +1,12 @@
 const HdWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const { interface, bytecode } = require('./compile');
+const secret = require('./secret.json');
+// var secret = JSON.parse(secretFile);
 
 // use test wallet
 const provider = new HdWalletProvider(
-  'liar forest slender marriage clown middle actress sense birth catalog uncle rival',
+  secret['wallet_mnemonic'],
   'https://kovan.infura.io/v3/af38ea05790c4aa49921ecf37bd84b34'
 );
 const web3 = new Web3(provider);
@@ -18,6 +20,7 @@ const deploy = async () => {
     .deploy({ data: bytecode })
     .send({ from: accounts[0], gas: '1000000' });
 
+  console.log(interface);
   console.log('Contract deployed to', result.options.address);
 };
 deploy();
